@@ -20,7 +20,8 @@ Pod::Spec.new do |s|
   s.summary      = "iOS View Controller for loading default launch screen in app and maybe to add some animations to it"
 
   s.description  = <<-DESC
-                   iOS View Controller for loading default launch screen in app and maybe to add some animations to it
+                   Use this class to subclass it. Hide some dynamic views inside LaunchScreen.xib if nessesary.
+                   Add subclass to storyboard and implement any animations you want in your subclass.
                    DESC
 
   s.homepage     = "https://github.com/k06a/LaunchScreenViewController"
@@ -58,7 +59,7 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # s.platform     = :ios
+  s.platform     = :ios
   # s.platform     = :ios, "5.0"
 
   #  When using multiple platforms
@@ -72,7 +73,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/k06a/LaunchScreenViewController.git", :commit => "6eac8a5b987862658c4a7ff8554150e2d0a426ba" }
+  s.source       = { :git => "https://github.com/k06a/LaunchScreenViewController.git", :commit => "6eac8a5b987862658c4a7ff8554150e2d0a426ba", :tag => "0.0.2" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
