@@ -19,11 +19,12 @@
 - (UIImageView *)snapshotView
 {
     if (_snapshotView == nil) {
-        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0.0);
+        UIGraphicsBeginImageContextWithOptions([UIScreen mainScreen].bounds.size, YES, 0.0);
         [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         _snapshotView = [[UIImageView alloc] initWithImage:img];
+        _snapshotView.frame = [UIScreen mainScreen].bounds;
     }
     return _snapshotView;
 }
@@ -33,8 +34,11 @@
     [super viewDidLoad];
     
     self.view = [[UINib nibWithNibName:@"LaunchScreen" bundle:nil] instantiateWithOwner:nil options:nil].firstObject;
+    self.view.frame = [UIScreen mainScreen].bounds;
+    [self.view layoutIfNeeded];
     
     UIApplication *app = [UIApplication sharedApplication];
+    app.keyWindow.windowLevel = UIWindowLevelStatusBar+1;
     [app.keyWindow addSubview:self.snapshotView];
 }
 
@@ -42,6 +46,8 @@
 {
     [super viewDidAppear:animated];
     [self.snapshotView removeFromSuperview];
+    UIApplication *app = [UIApplication sharedApplication];
+    app.keyWindow.windowLevel = UIWindowLevelNormal;
 }
 
 @end
