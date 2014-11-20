@@ -20,7 +20,7 @@ Usage
 1. Add hidden elements to `LaunchScreen.xib`
 2. Create `LaunchScreenViewController` subclass
 3. Add controller subclass to storyboard
-4. Create segue and call it manually in `viewWillAppear:`
+4. Create segue and call it once manually in `viewWillAppear:`
 
 ```
 - (void)viewWillAppear:(BOOL)animated
@@ -29,12 +29,12 @@ Usage
     
     if (!self.screensaverLaunched) {
         self.screensaverLaunched = YES;
-        [self.tabBarController performSegueWithIdentifier:@"segue_screensaver" sender:nil];
+        [self performSegueWithIdentifier:@"segue_screensaver" sender:nil];
     }
 }
 ```
 
-5. Addcustom animations to your controller subclass
+5. Add custom animations to your controller subclass
 
 Connect
 ==========================
