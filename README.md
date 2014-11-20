@@ -3,6 +3,10 @@ LaunchScreenViewController
 
 iOS View Controller for loading default launch screen in app and maybe to add some animations to it
 
+This library will help you to build launch screens like this for example:
+
+<img src="https://raw.github.com/k06a/LaunchScreenViewController/master/example.gif" width="30%" />
+
 Installation
 ==========================
 
