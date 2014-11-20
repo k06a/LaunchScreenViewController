@@ -36,6 +36,6 @@ Usage
 
 5. Add custom animations to your controller subclass
 
-Connect
+Contribute
 ==========================
-You are welcome to fork, PR, issues ... 
+You are welcome to fork, PR, create issues ... 
