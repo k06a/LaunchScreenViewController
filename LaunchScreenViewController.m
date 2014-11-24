@@ -29,15 +29,21 @@
     return _snapshotView;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.view = [[UINib nibWithNibName:@"LaunchScreen" bundle:nil] instantiateWithOwner:nil options:nil].firstObject;
-    self.view.frame = [UIScreen mainScreen].bounds;
+    UIApplication *app = [UIApplication sharedApplication];
+    
+    self.view = [[UINib nibWithNibName:@"LaunchScreen" bundle:nil] instantiateWithOwner:self options:nil].firstObject;
+    self.view.frame = app.keyWindow.bounds;
     [self.view layoutIfNeeded];
     
-    UIApplication *app = [UIApplication sharedApplication];
     app.keyWindow.windowLevel = UIWindowLevelStatusBar+1;
     [app.keyWindow addSubview:self.snapshotView];
 }
