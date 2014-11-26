@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UIImageView *snapshotView;
 @property (nonatomic, readonly) NSString *launchScreenName;
+@property (nonatomic, readonly) BOOL isStatusBarInitiallyHidden;
 
 @end
 
@@ -35,9 +36,14 @@
     return [[NSBundle mainBundle] infoDictionary][@"UILaunchStoryboardName"];
 }
 
+- (BOOL)isStatusBarInitiallyHidden
+{
+    return [[[NSBundle mainBundle] infoDictionary][@"UIStatusBarHidden"] boolValue];
+}
+
 - (BOOL)prefersStatusBarHidden
 {
-    return YES;
+    return self.isStatusBarInitiallyHidden;
 }
 
 - (void)viewDidLoad
@@ -49,8 +55,8 @@
     self.view = [[UINib nibWithNibName:self.launchScreenName bundle:nil] instantiateWithOwner:self options:nil].firstObject;
     self.view.frame = app.keyWindow.bounds;
     [self.view layoutIfNeeded];
-    
-    app.keyWindow.windowLevel = UIWindowLevelStatusBar+1;
+    if (self.isStatusBarInitiallyHidden)
+        app.keyWindow.windowLevel = UIWindowLevelStatusBar+1;
     [app.keyWindow addSubview:self.snapshotView];
 }
 
@@ -59,7 +65,8 @@
     [super viewDidAppear:animated];
     [self.snapshotView removeFromSuperview];
     UIApplication *app = [UIApplication sharedApplication];
-    app.keyWindow.windowLevel = UIWindowLevelNormal;
+    if (self.isStatusBarInitiallyHidden)
+        app.keyWindow.windowLevel = UIWindowLevelNormal;
 }
 
 @end
