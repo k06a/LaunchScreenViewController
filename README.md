@@ -20,19 +20,19 @@ Usage
 1. Add hidden elements to `LaunchScreen.xib`
 2. Create `LaunchScreenViewController` subclass
 3. Add controller subclass to storyboard
-4. Create segue and call it once manually in `viewWillAppear:`
+4. Create modal segue and call it once manually in `viewWillAppear:`
 
-```
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+  ```
+  - (void)viewWillAppear:(BOOL)animated
+  {
+      [super viewWillAppear:animated];
     
-    if (!self.screensaverLaunched) {
-        self.screensaverLaunched = YES;
-        [self performSegueWithIdentifier:@"segue_screensaver" sender:nil];
-    }
-}
-```
+      if (!self.screensaverLaunched) {
+          self.screensaverLaunched = YES;
+          [self performSegueWithIdentifier:@"segue_screensaver" sender:nil];
+      }
+  }
+  ```
 
 5. Add custom animations to your controller subclass
 
