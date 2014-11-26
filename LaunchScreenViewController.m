@@ -11,6 +11,7 @@
 @interface LaunchScreenViewController ()
 
 @property (nonatomic, strong) UIImageView *snapshotView;
+@property (nonatomic, readonly) NSString *launchScreenName;
 
 @end
 
@@ -29,6 +30,11 @@
     return _snapshotView;
 }
 
+- (NSString *)launchScreenName
+{
+    return [[NSBundle mainBundle] infoDictionary][@"UILaunchStoryboardName"];
+}
+
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
@@ -40,7 +46,7 @@
     
     UIApplication *app = [UIApplication sharedApplication];
     
-    self.view = [[UINib nibWithNibName:@"LaunchScreen" bundle:nil] instantiateWithOwner:self options:nil].firstObject;
+    self.view = [[UINib nibWithNibName:self.launchScreenName bundle:nil] instantiateWithOwner:self options:nil].firstObject;
     self.view.frame = app.keyWindow.bounds;
     [self.view layoutIfNeeded];
     
