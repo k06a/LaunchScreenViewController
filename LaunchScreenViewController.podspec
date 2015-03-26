@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "LaunchScreenViewController"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "iOS View Controller for loading default launch screen in app and maybe to add some animations to it"
 
   s.description  = <<-DESC
@@ -73,7 +73,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/k06a/LaunchScreenViewController.git", :tag => "0.0.4" }
+  s.source       = { :git => "https://github.com/k06a/LaunchScreenViewController.git", :tag => "0.0.5" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

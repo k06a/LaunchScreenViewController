@@ -21,8 +21,15 @@
 - (UIView *)snapshotView
 {
     if (_snapshotView == nil) {
+        UIView *viewCopy = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self.view]];
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        [window addSubview:viewCopy];
+        viewCopy.frame = window.bounds;
+        
         UIGraphicsBeginImageContextWithOptions([UIScreen mainScreen].bounds.size, YES, 0.0);
-        [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+        [viewCopy.layer renderInContext:UIGraphicsGetCurrentContext()];
+        [viewCopy removeFromSuperview];
+        
         UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         _snapshotView = [[UIImageView alloc] initWithImage:img];
