@@ -1,8 +1,8 @@
 //
 //  LaunchScreenViewController.h
-//  Xidmet
+//  LaunchScreenViewController
 //
-//  Created by Антон Буков on 19.11.14.
+//  Created by Anton Bukov on 19.11.14.
 //  Copyright (c) 2014 Anton Bukov. All rights reserved.
 //
 

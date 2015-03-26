@@ -1,8 +1,8 @@
 //
 //  LaunchScreenViewController.m
-//  Xidmet
+//  LaunchScreenViewController
 //
-//  Created by Антон Буков on 19.11.14.
+//  Created by Anton Bukov on 19.11.14.
 //  Copyright (c) 2014 Anton Bukov. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 @interface LaunchScreenViewController ()
 
-@property (nonatomic, strong) UIImageView *snapshotView;
+@property (nonatomic, strong) UIView *snapshotView;
 @property (nonatomic, readonly) NSString *launchScreenName;
 @property (nonatomic, readonly) BOOL isStatusBarInitiallyHidden;
 
@@ -18,7 +18,7 @@
 
 @implementation LaunchScreenViewController
 
-- (UIImageView *)snapshotView
+- (UIView *)snapshotView
 {
     if (_snapshotView == nil) {
         UIGraphicsBeginImageContextWithOptions([UIScreen mainScreen].bounds.size, YES, 0.0);
@@ -51,7 +51,6 @@
     [super viewDidLoad];
     
     UIApplication *app = [UIApplication sharedApplication];
-    
     self.view = [[UINib nibWithNibName:self.launchScreenName bundle:nil] instantiateWithOwner:self options:nil].firstObject;
     self.view.frame = app.keyWindow.bounds;
     [self.view layoutIfNeeded];
@@ -63,6 +62,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     [self.snapshotView removeFromSuperview];
     UIApplication *app = [UIApplication sharedApplication];
     if (self.isStatusBarInitiallyHidden)
