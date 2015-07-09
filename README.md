@@ -26,11 +26,11 @@ Usage
   - (void)viewWillAppear:(BOOL)animated
   {
       [super viewWillAppear:animated];
-    
-      if (!self.screensaverLaunched) {
-          self.screensaverLaunched = YES;
+      
+      static dispatch_once_t onceToken;
+      dispatch_once(&onceToken, ^{
           [self performSegueWithIdentifier:@"segue_screensaver" sender:nil];
-      }
+      });
   }
   ```
 
